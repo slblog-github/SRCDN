@@ -1,0 +1,251 @@
+<!doctype html><html><head><title>服务监测 - SL's Blog</title><meta http-equiv="content-type" content="text/html; charset=utf-8"><link href="./css/bootstrap.min.css" rel="stylesheet" type="text/css"><link href="./css/bootstrap.css" rel="stylesheet" type="text/css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link href="./css/blue.css" rel="stylesheet" type="text/css" media="all">
+
+   	<link rel="stylesheet" href="/api/css/font-awesome.min.css">
+
+<script type="text/javascript" src="./js/jquery.min.js"></script>
+<script type="text/javascript" src="./js/bootstrap.js"></script>
+<script type="text/javascript" src="./js/bootstrap.min.js"></script>
+
+<link href="./css/owl.carousel.css" rel="stylesheet">
+<script src="./js/owl.carousel.js"></script>
+		<script>
+			$(document).ready(function() {
+
+				$("#owl-demo").owlCarousel({
+					items : 4,
+					lazyLoad : true,
+					autoPlay : true,
+					navigation : true,
+					navigationText : ["", ""],
+					rewindNav : false,
+					scrollPerPage : false,
+					pagination : false,
+					paginationNumbers : false,
+				});
+
+			});
+		</script>
+
+<script>
+(function($){
+	$.fn.percentPie = function(options){
+
+		var settings = $.extend({
+			width: 100,
+			trackColor: "EEEEEE",
+			barColor: "E2534B",
+			barWeight: 30,
+			startPercent: 0,
+			endPercent: 1,
+			fps: 60
+		}, options);
+
+		this.css({
+			width: settings.width,
+			height: settings.width
+		});
+
+		var	that = this,
+			hoverPolice = false,
+			canvasWidth = settings.width,
+			canvasHeight = canvasWidth,
+			id = $('canvas').length,
+			canvasElement = $('<canvas id="'+ id +'" width="' + canvasWidth + '" height="' + canvasHeight + '"></canvas>'),
+			canvas = canvasElement.get(0).getContext("2d"),
+			centerX = canvasWidth/2,
+			centerY = canvasHeight/2,
+			radius = settings.width/2 - settings.barWeight/2;
+			counterClockwise = false,
+			fps = 1000 / settings.fps,
+			update = .01;
+			this.angle = settings.startPercent;
+
+		this.drawArc = function(startAngle, percentFilled, color){
+			var drawingArc = true;
+			canvas.beginPath();
+			canvas.arc(centerX, centerY, radius, (Math.PI/180)*(startAngle * 360 - 90), (Math.PI/180)*(percentFilled * 360 - 90), counterClockwise);
+			canvas.strokeStyle = color;
+			canvas.lineWidth = settings.barWeight;
+			canvas.stroke();
+			drawingArc = false;
+		}
+
+		this.fillChart = function(stop){
+			var loop = setInterval(function(){
+				hoverPolice = true;
+				canvas.clearRect(0, 0, canvasWidth, canvasHeight);
+
+				that.drawArc(0, 360, settings.trackColor);
+				that.angle += update;
+				that.drawArc(settings.startPercent, that.angle, settings.barColor);
+
+				if(that.angle > stop){
+					clearInterval(loop);
+					hoverPolice = false;
+				}
+			}, fps);
+		}
+
+		this.mouseover(function(){
+			if(hoverPolice == false){
+				that.angle = settings.startPercent;
+				that.fillChart(settings.endPercent);
+			}
+		});
+
+		this.fillChart(settings.endPercent);
+		this.append(canvasElement);
+		return this;
+	}
+}(jQuery));
+
+$(document).ready(function() {
+
+	$('.google').percentPie({
+		width: 100,
+		trackColor: "E2534B",
+		barColor: "76C7C0",
+		barWeight: 20,
+		endPercent: .9,
+		fps: 60
+	});
+  
+  $('.moz').percentPie({
+		width: 100,
+		trackColor: "E2534B",
+		barColor: "76C7C0",
+		barWeight: 20,
+		endPercent: .75,
+		fps: 60
+	});
+  
+  $('.safari').percentPie({
+		width: 100,
+		trackColor: "E2534B",
+		barColor: "#76C7C0",
+		barWeight: 20,
+		endPercent: .5,
+		fps: 60
+	});
+    
+});
+</script>
+
+<script type="text/javascript">
+function Ping(ip, serverName, Tag){  
+  var img = new Image();  
+  var start = new Date().getTime();  
+  img.src = "http://" + ip +"?t=" + start;
+  var flag = false;  
+  img.onload = function(){  
+    flag = true;  
+    document.getElementById(serverName).innerHTML = "服务正常";  
+	document.getElementById(Tag).className = "price_Online";
+  }  
+  var timer = setTimeout(function(){  
+     if(!flag){  
+        flag = false;  
+    document.getElementById(serverName).innerHTML = "离线"; 
+	document.getElementById(Tag).className = "price_Offline";	
+      }  
+  },5000);  
+}  
+</script>
+
+</head>
+<body>
+
+
+<div class="main_bg">
+<div class="container">
+	<div class="main_grid1">
+		<h3 class="style pull-left">服务器状态实时监控与检测</h3>
+		
+		<div class="clearfix"></div>
+	</div>
+</div>
+</div>
+<div class="main_btm1">
+<div class="container">
+	<ul class="pricing_table list-unstyled">
+		<li class="price_block">
+			<h3>博客总服务器</h3>
+			<div class="price_Online" id="MS">
+				<div class="price_figure">
+					<span class="price_number" id="MainServer">服务正常</span>
+				</div>
+			</div>
+			<ul class="features list-unstyled">
+				<li>服务状态更新可能会有延迟</li>
+			</ul>
+		</li>
+		<li class="price_block">
+			
+			
+			
+		</li>
+		
+		<li class="price_block">
+			<h3>API</h3>
+			<div class="price_Online" id="Ac">
+				<div class="price_figure">
+					<span class="price_number" id="Account">服务正常</span>
+				</div>
+			</div>
+			<ul class="features list-unstyled">
+				<li>服务状态更新可能会有延迟</li>
+			</ul>
+		</li>		
+		<div class="clearfix"></div>
+	</ul>
+	
+	<ul class="pricing_table list-unstyled">
+		<li class="price_block">
+			<h3>CDN2</h3>
+			<div class="price_Online" id="WS">
+				<div class="price_figure">
+					<span class="price_number" id="Website">服务正常</span>
+				</div>
+			</div>
+			<ul class="features list-unstyled">
+				<li>服务状态更新可能会有延迟</li>
+			</ul>
+		</li>
+
+		
+		
+		<li class="price_block">
+			<h3>CDN3</h3>
+			<div class="price_Online" id="BX">
+				<div class="price_figure">
+					<span class="price_number" id="BakaXL">服务正常</span>
+				</div>
+			</div>
+			<ul class="features list-unstyled">
+				<li>服务状态更新可能会有延迟</li>
+			</ul>
+		</li>
+		<li class="price_block">
+			
+			
+			
+		</li>
+		<div class="clearfix"></div>
+		<div class="pricing2">
+		<h6>服务器的各项服务的状态监测可能最少需要1天左右，结果可能会有误差，以实际为准</h6>
+		<h6>本系统将监测您目前的网络与服务器的连接情况，监测结果取决于您的网络环境</h6>
+<h6>本页面灵感来自神秘幻想服务器官网</h6>
+<h6>本页面版权归TT702所有</h6>
+		
+		</div>
+	</ul>
+	<br>
+</div>
+</div>
+
+
+
+</body></html>
