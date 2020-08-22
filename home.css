@@ -1,3 +1,4 @@
+/** 仿大白萝卜的主页 **/
 * {
     margin: 0;
     padding: 0;
@@ -161,4 +162,14 @@ body {
 .meBox:hover .meBox-Button a {
     width: 165px;
     margin-top: 10px;
+}
+
+@media screen and (max-width: 1120px)
+.meBox {
+    float: none;
+    margin: 100px auto 100px;
+}
+@media screen and (max-width: 1250px)
+.meBox {
+    margin-left: 3%;
 }
