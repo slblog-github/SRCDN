@@ -44,7 +44,7 @@ body {
 .headPhoto {
     width: 8rem;
     height: 8rem;
-    background: url(../img/luobo.png) no-repeat;
+    background: url(https://cdn.slblog.ga/pic/logo.png) no-repeat;
     background-size: cover;
     border-radius: 50%;
     position: relative;
