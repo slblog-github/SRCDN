@@ -185,3 +185,72 @@ body {
 .meBox {
     margin-left: 3%;
 }
+
+    #cmdBox {
+        float: none;
+        margin: 0 auto 100px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .meBox {
+        width: 300px;
+    }
+
+    .meBox:hover {
+        width: 300px;
+        height: 25rem;
+        margin: 100px auto 100px;
+    }
+
+    .meBox-Button a:hover {
+        color: rgb(0, 132, 255);
+    }
+
+    .meBox:hover .meBox-Button a {
+        width: 150px;
+        margin-top: 13px;
+    }
+
+    .meBox:hover .meBox-title p {
+        font-size: 1.2rem;
+    }
+
+    .meBox:hover .headPhoto {
+        width: 8rem;
+        height: 8rem;
+        margin: -0.5rem 0 0 -4rem;
+        transform: rotate(360deg);
+    }
+
+    .meBox:hover .meBox-text {
+        font-size: 1rem;
+    }
+
+    .meBox-Button a {
+        width: 150px;
+    }
+
+    #cmdBox {
+        width: 100%;
+        height: 850px;
+    }
+
+    .cmd {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .cmd2 {
+        position: relative;
+        top: 20px;
+        left: 0;
+    }
+
+    .cmd:hover {
+        width: 90%;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+        margin: 0 auto;
+        z-index: 1;
+    }
+}
