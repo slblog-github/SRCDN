@@ -12,26 +12,24 @@
   font-size: 40px;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #212121;
+  -moz-osx-font-smoothing: grayscale; 
+  color:#212121;
   text-decoration: none;
 }
 
 .icon-qqic:before {
   content: "\e60a";
   color: #03A9F4;
-  text-decoration: none;
 }
 
 .icon-GitHub:before {
   content: "\ea0a";
-  text-decoration: none;
+  color: #212121;
 }
 
 .icon-email:before {
   content: "\e6eb";
   color: #03A9F4;
-  text-decoration: none;
 }
 
 .icon-gonggao:before {
